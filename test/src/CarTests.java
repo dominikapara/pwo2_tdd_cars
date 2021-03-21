@@ -4,7 +4,7 @@ public class CarTests {
 
     @Test
     void canCreateCarInstance() {
-        Car car = new Car();
+        new Car("Blue", "Honda", 6.5f, 30);
     }
 
 }

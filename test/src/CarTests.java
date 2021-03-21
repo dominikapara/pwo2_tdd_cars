@@ -55,10 +55,16 @@ public class CarTests {
     void refuelCantHaveFuelLevelBiggerThanTankCapacity() throws FuelLevelBiggerThanTankCapacityException {
 
         Car car = new Car("color", "make", 1f, 10, 5, 1, 1);
-        Assertions.assertThrows(FuelLevelBiggerThanTankCapacityException.class,
-                () -> {
-                    car.refuel(100);
-                }
-        );
+        Assertions.assertThrows(FuelLevelBiggerThanTankCapacityException.class, () -> {
+            car.refuel(100);
+        });
+    }
+
+    @Test
+    void driveCantAcceptMoreKilometerThanFuelAllows() throws FuelLevelBiggerThanTankCapacityException {
+        Car car = new Car("color", "make", 10f, 30, 27.5f, 1, 1);
+        Assertions.assertThrows(NoFuelForSuchKilometersCountException.class, () -> {
+            car.drive(280f);
+        });
     }
 }

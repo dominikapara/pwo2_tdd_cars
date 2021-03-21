@@ -83,4 +83,11 @@ public class CarTests {
             car.drive(10001);
         });
     }
+
+    @Test
+    void driveDailyOdometerReset() throws FuelLevelBiggerThanTankCapacityException, MoreThanMaxOdometerKilometers, MoreThanMaxDayOdometerKilometers, NoFuelForSuchKilometersCountException {
+        Car car = new Car("color", "make", 1f, 300, 300f, 1, 9000);
+        car.drive(1001);
+        assert car.getDailyOdometer() == 1;
+    }
 }

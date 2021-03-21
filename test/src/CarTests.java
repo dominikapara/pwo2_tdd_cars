@@ -4,11 +4,16 @@ public class CarTests {
 
     @Test
     void canCreateCarInstance() {
-        Car car = new Car("Blue", "Honda", 6.5f, 30);
-        assert car.color.equals("Blue");
-        assert car.make.equals("Honda");
-        assert car.fuelConsumption == 6.5f;
-        assert car.tankCapacity == 30;
+        String color = "Blue";
+        String make = "Honda";
+        float fuelConsumption = 6.5f;
+        int tankCapacity = 30;
+
+        Car car = new Car(color, make, fuelConsumption, tankCapacity);
+        assert car.color.equals(color);
+        assert car.make.equals(make);
+        assert car.fuelConsumption == fuelConsumption;
+        assert car.tankCapacity == tankCapacity;
     }
 
 }

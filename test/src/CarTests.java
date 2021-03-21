@@ -34,11 +34,20 @@ public class CarTests {
     }
 
     @Test
-    void carFuelChangesFuelLevelCorrectly() throws FuelLevelBiggerThanTankCapacityException, RefuelLitresNegativeException {
+    void carFuelChangesFuelLevelCorrectly() throws FuelLevelBiggerThanTankCapacityException {
         Car car = new Car("color", "make", 1f, 100, 10f, 1, 1);
 
         car.refuel(5f);
 
         assert car.getFuelLevel() == 15f;
+    }
+
+    @Test
+    void carRefuelThrowsExceptionIfNegative() throws FuelLevelBiggerThanTankCapacityException {
+        Car car = new Car("color", "make", 1f, 100, 10f, 1, 1);
+
+        Assertions.assertThrows(RefuelLitresNegativeException.class, () -> {
+            car.refuel(-5f);
+        });
     }
 }

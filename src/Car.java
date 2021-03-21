@@ -3,7 +3,7 @@ public class Car {
     private final String make;
     private final float fuelConsumption;
     private final int tankCapacity;
-    private final float fuelLevel;
+    private float fuelLevel;
     private final int odometer;
     private final float dailyOdometer;
 

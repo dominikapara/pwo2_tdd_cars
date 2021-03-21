@@ -32,4 +32,13 @@ public class CarTests {
                 () -> new Car("color", "make", 1f, tankCapacity, fuelLevel, 1, 1)
         );
     }
+
+    @Test
+    void carFuelChangesFuelLevelCorrectly() throws FuelLevelBiggerThanTankCapacityException, RefuelLitresNegativeException {
+        Car car = new Car("color", "make", 1f, 100, 10f, 1, 1);
+
+        car.refuel(5f);
+
+        assert car.getFuelLevel() == 15f;
+    }
 }

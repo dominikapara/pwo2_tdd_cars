@@ -50,4 +50,15 @@ public class CarTests {
             car.refuel(-5f);
         });
     }
+
+    @Test
+    void refuelCantHaveFuelLevelBiggerThanTankCapacity() throws FuelLevelBiggerThanTankCapacityException {
+
+        Car car = new Car("color", "make", 1f, 10, 5, 1, 1);
+        Assertions.assertThrows(FuelLevelBiggerThanTankCapacityException.class,
+                () -> {
+                    car.refuel(100);
+                }
+        );
+    }
 }

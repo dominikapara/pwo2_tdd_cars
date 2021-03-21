@@ -64,8 +64,12 @@ public class Car {
         fuelLevel += litres;
     }
 
-    public void drive(float km) throws NoFuelForSuchKilometersCountException, MoreThanMaxOdometerKilometers {
+    public void drive(float km) throws NoFuelForSuchKilometersCountException, MoreThanMaxOdometerKilometers, MoreThanMaxDayOdometerKilometers {
         float maxKmOnFuel = fuelLevel / fuelConsumption * 100;
+
+        if(odometer + km > MAX_DAY_ODOMETER_VALUE) {
+            throw new MoreThanMaxDayOdometerKilometers();
+        }
 
         if(odometer + km > MAX_ODOMETER_VALUE) {
             throw new MoreThanMaxOdometerKilometers();

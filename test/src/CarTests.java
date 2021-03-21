@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class CarTests {
@@ -22,4 +23,13 @@ public class CarTests {
         assert car.getDailyOdometer() == dailyOdometer;
     }
 
+    @Test
+    void carInstanceCantHaveFuelLevelBiggerThanTankCapacity() {
+        int tankCapacity = 20;
+        float fuelLevel = 30;
+
+        Assertions.assertThrows(FuelLevelBiggerThanTankCapacityException.class,
+                () -> new Car("color", "make", 1f, tankCapacity, fuelLevel, 1, 1)
+        );
+    }
 }

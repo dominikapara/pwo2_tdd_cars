@@ -1,8 +1,8 @@
 public class Car {
-    String color;
-    String make;
-    float fuelConsumption;
-    int tankCapacity;
+    private final String color;
+    private final String make;
+    private final float fuelConsumption;
+    private final int tankCapacity;
 
     public Car(String color, String make, float fuelConsumption, int tankCapacity) {
         this.color = color;

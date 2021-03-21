@@ -10,10 +10,10 @@ public class CarTests {
         int tankCapacity = 30;
 
         Car car = new Car(color, make, fuelConsumption, tankCapacity);
-        assert car.color.equals(color);
-        assert car.make.equals(make);
-        assert car.fuelConsumption == fuelConsumption;
-        assert car.tankCapacity == tankCapacity;
+        assert car.getColor().equals(color);
+        assert car.getMake().equals(make);
+        assert car.getFuelConsumption() == fuelConsumption;
+        assert car.getTankCapacity() == tankCapacity;
     }
 
 }

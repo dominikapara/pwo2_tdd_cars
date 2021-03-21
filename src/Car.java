@@ -49,7 +49,11 @@ public class Car {
         return dailyOdometer;
     }
 
-    public void refuel(float litres) throws FuelLevelBiggerThanTankCapacityException {
+    public void refuel(float litres) throws RefuelLitresNegativeException, FuelLevelBiggerThanTankCapacityException {
+        if(litres < 0) {
+            throw new RefuelLitresNegativeException();
+        }
+
         if(litres + getFuelLevel() > getTankCapacity()) {
             throw new FuelLevelBiggerThanTankCapacityException();
         }

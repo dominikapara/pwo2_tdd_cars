@@ -34,7 +34,7 @@ public class CarTests {
     }
 
     @Test
-    void carFuelChangesFuelLevelCorrectly() throws FuelLevelBiggerThanTankCapacityException {
+    void carFuelChangesFuelLevelCorrectly() throws FuelLevelBiggerThanTankCapacityException, RefuelLitresNegativeException {
         Car car = new Car("color", "make", 1f, 100, 10f, 1, 1);
 
         car.refuel(5f);

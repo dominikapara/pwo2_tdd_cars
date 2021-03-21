@@ -7,8 +7,8 @@ public class Car {
     private final float fuelConsumption;
     private final int tankCapacity;
     private float fuelLevel;
-    private final int odometer;
-    private final float dailyOdometer;
+    private int odometer;
+    private float dailyOdometer;
 
     public Car(String color, String make, float fuelConsumption, int tankCapacity, float fuelLevel, int odometer, float dailyOdometer) throws FuelLevelBiggerThanTankCapacityException {
         this.color = color;
@@ -53,11 +53,11 @@ public class Car {
     }
 
     public void refuel(float litres) throws RefuelLitresNegativeException, FuelLevelBiggerThanTankCapacityException {
-        if(litres < 0) {
+        if (litres < 0) {
             throw new RefuelLitresNegativeException();
         }
 
-        if(litres + getFuelLevel() > getTankCapacity()) {
+        if (litres + getFuelLevel() > getTankCapacity()) {
             throw new FuelLevelBiggerThanTankCapacityException();
         }
 
@@ -67,16 +67,19 @@ public class Car {
     public void drive(float km) throws NoFuelForSuchKilometersCountException, MoreThanMaxOdometerKilometers, MoreThanMaxDayOdometerKilometers {
         float maxKmOnFuel = fuelLevel / fuelConsumption * 100;
 
-        if(odometer + km > MAX_DAY_ODOMETER_VALUE) {
+        if (odometer + km > MAX_DAY_ODOMETER_VALUE) {
             throw new MoreThanMaxDayOdometerKilometers();
         }
 
-        if(odometer + km > MAX_ODOMETER_VALUE) {
+        if (odometer + km > MAX_ODOMETER_VALUE) {
             throw new MoreThanMaxOdometerKilometers();
         }
 
-        if(maxKmOnFuel < km) {
+        if (maxKmOnFuel < km) {
             throw new NoFuelForSuchKilometersCountException();
         }
+
+        odometer += km;
+        dailyOdometer += km;
     }
 }

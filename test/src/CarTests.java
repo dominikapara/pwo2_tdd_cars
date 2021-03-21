@@ -75,4 +75,12 @@ public class CarTests {
             car.drive(9999999999999f);
         });
     }
+
+    @Test
+    void driveCantDriveMoreKilometersThanDayOdometerMax() throws FuelLevelBiggerThanTankCapacityException {
+        Car car = new Car("color", "make", 10f, 30, 27.5f, 1, 1);
+        Assertions.assertThrows(MoreThanMaxDayOdometerKilometers.class, () -> {
+            car.drive(10001);
+        });
+    }
 }

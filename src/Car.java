@@ -60,4 +60,11 @@ public class Car {
 
         fuelLevel += litres;
     }
+
+    public void drive(float km) throws NoFuelForSuchKilometersCountException {
+        float maxKmOnFuel = fuelLevel / fuelConsumption * 100;
+        if(maxKmOnFuel < km) {
+            throw new NoFuelForSuchKilometersCountException();
+        }
+    }
 }

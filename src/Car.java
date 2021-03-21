@@ -7,7 +7,7 @@ public class Car {
     private final int odometer;
     private final float dailyOdometer;
 
-    public Car(String color, String make, float fuelConsumption, int tankCapacity, float fuelLevel, int odometer, float dailyOdometer) {
+    public Car(String color, String make, float fuelConsumption, int tankCapacity, float fuelLevel, int odometer, float dailyOdometer) throws FuelLevelBiggerThanTankCapacityException {
         this.color = color;
         this.make = make;
         this.fuelConsumption = fuelConsumption;
@@ -15,6 +15,10 @@ public class Car {
         this.fuelLevel = fuelLevel;
         this.odometer = odometer;
         this.dailyOdometer = dailyOdometer;
+
+        if (tankCapacity < fuelLevel) {
+            throw new FuelLevelBiggerThanTankCapacityException();
+        }
     }
 
     public String getColor() {

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 public class CarTests {
 
     @Test
-    void carInstanceCreatedWithProperValues() {
+    void carInstanceCreatedWithProperValues() throws FuelLevelBiggerThanTankCapacityException {
         String color = "Blue";
         String make = "Honda";
         float fuelConsumption = 6.5f;

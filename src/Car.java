@@ -54,6 +54,10 @@ public class Car {
             throw new RefuelLitresNegativeException();
         }
 
+        if(litres + getFuelLevel() > getTankCapacity()) {
+            throw new FuelLevelBiggerThanTankCapacityException();
+        }
+
         fuelLevel += litres;
     }
 }

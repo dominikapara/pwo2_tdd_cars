@@ -1,4 +1,7 @@
 public class Car {
+    private static final int MAX_ODOMETER_VALUE = 10000000; // 10 000 000
+    private static final int MAX_DAY_ODOMETER_VALUE = 10000; // 10 000
+
     private final String color;
     private final String make;
     private final float fuelConsumption;
@@ -61,8 +64,13 @@ public class Car {
         fuelLevel += litres;
     }
 
-    public void drive(float km) throws NoFuelForSuchKilometersCountException {
+    public void drive(float km) throws NoFuelForSuchKilometersCountException, MoreThanMaxOdometerKilometers {
         float maxKmOnFuel = fuelLevel / fuelConsumption * 100;
+
+        if(odometer + km > MAX_ODOMETER_VALUE) {
+            throw new MoreThanMaxOdometerKilometers();
+        }
+
         if(maxKmOnFuel < km) {
             throw new NoFuelForSuchKilometersCountException();
         }
